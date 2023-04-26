@@ -12,10 +12,16 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.digitalnomads.android.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_networking"
+        android:name="com.digitalnomads.android.ui.networking.NetworkingFragment"
+        android:label="@string/title_networking"
+        tools:layout="@layout/fragment_netwroking" />
+
+    <fragment
+        android:id="@+id/navigation_places"
+        android:name="com.digitalnomads.android.ui.places.PlaceFragment"
+        android:label="@string/title_networking"
+        tools:layout="@layout/fragment_place" />
 
     <fragment
         android:id="@+id/navigation_notifications"

@@ -1,6 +1,24 @@
 <resources>
     <string name="app_name">DigitalNomads</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_home">Homepage</string>
+    <string name="title_networking">Networking</string>
+    <string name="title_places">Places</string>
     <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="heading_homepage">Your scheduled working session</string>
+    <string name="appointment_date">April 2nd 2023</string>
+    <string name="you_are_going_to_work_with">You are going to work with</string>
+    <string name="working_partner_name">Maria Gracia</string>
+    <string name="where">Where</string>
+    <string name="working_place_name">Starbuks - Arguelles</string>
+    <string name="swipe_up_to_start_the_navigation">Swipe up to start the navigation</string>
+    <string name="your_scheduled_working_sessions">Your scheduled working sessions</string>
+    <string name="user_profile_image">User Profile Image</string>
+    <string name="image_place_to_work_from">Image place to work from</string>
+    <string name="swipe_up_icon">Swipe up icon</string>
+    <string name="find_new_place">Find new place</string>
+    <string name="connect_new_people">Connect new people</string>
+
 </resources>

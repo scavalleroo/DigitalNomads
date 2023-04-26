@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
+
+    <ImageView
+        android:id="@+id/close_popup"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="5dp"
+        android:contentDescription="Close button"
+        app:srcCompat="@drawable/outline_close_black" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Filters"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/set_distance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Set the distance"
+        android:textSize="18sp" />
+
+    <com.google.android.material.slider.RangeSlider
+        android:id="@+id/slider_distance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:tooltipText="Select the range"
+        android:contentDescription="Select the range" />
+
+    <TextView
+        android:id="@+id/select_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select the field"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_field_list"
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/ui_design_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        android:textAllCaps="false"
+                        android:text="UI Design" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/data_science_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        android:textAllCaps="false"
+                        android:text="Data Science" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/physics_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        android:textAllCaps="false"
+                        android:text="Physics" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/engineering_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        android:textAllCaps="false"
+                        android:text="Engineering" />
+
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <TextView
+        android:id="@+id/select_languages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select the language"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_language_list"
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/eng_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        android:textAllCaps="false"
+                        android:text="ENG" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/spa_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        android:textAllCaps="false"
+                        android:text="SPA" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/gre_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        android:textAllCaps="false"
+                        android:text="GRE" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/rus_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        android:textAllCaps="false"
+                        android:text="RUS" />
+
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <TextView
+        android:id="@+id/select_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select the day"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_days_list"
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/fri_17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        android:textAllCaps="false"
+                        android:text="17\nFriday" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/sat_18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        android:textAllCaps="false"
+                        android:text="18\nSaturday" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/sun_19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        android:textAllCaps="false"
+                        android:text="19\nSunday" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/mon_20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        android:textAllCaps="false"
+                        android:text="20\nMonday" />
+
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/save"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="10dp"
+        android:textSize="16sp"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/soft_grey"
+        app:strokeWidth="1dp"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:text="Save" />
+
+</LinearLayout>

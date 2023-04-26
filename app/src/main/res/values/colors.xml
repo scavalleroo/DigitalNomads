@@ -5,6 +5,34 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+
+    <!-- Pallet 1 -->
+    <color name="ocean_blue">#0077be</color>
+    <color name="sandy_beige">#f4d8ae</color>
+    <color name="coral_orange">#ff7f50</color>
+    <color name="dark_grey">#333333</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Pallet 2 -->
+    <color name="earthy_green">#8f9779</color>
+    <color name="warm_brown">#b5651d</color>
+    <color name="brunt_orange">#ff7043</color>
+    <color name="off_white">#F5F5F5</color>
+    <color name="dark_brown">#321911</color>
+
+    <!-- Pallet 3 -->
+    <color name="dark_blue">#1a237e</color>
+    <color name="light_grey">#f2f2f2</color>
+    <color name="gold">#ffc107</color>
+<!--    <color name="white">#FFFFFFFF</color>-->
+    <color name="black">#FF000000</color>
+<!--    <color name="dark_grey">#333333</color>-->
+
+    <!-- Pallet 4 -->
+    <color name="soft_grey">#e0e0e0</color>
+    <color name="light_blue">#90caf9</color>
+    <color name="orange">#ff9800</color>
+<!--    <color name="black">#FF000000</color>-->
+<!--    <color name="white">#FFFFFFFF</color>-->
+
 </resources>

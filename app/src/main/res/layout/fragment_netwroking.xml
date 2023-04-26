@@ -5,14 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.networking.NetworkingFragment">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <androidx.viewpager.widget.ViewPager
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:layout_height="match_parent">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_working_break"
@@ -28,15 +23,21 @@
 
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/tab_break"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:text="Break" />
 
             </com.google.android.material.tabs.TabLayout>
 
-        </androidx.viewpager.widget.ViewPager>
+        <include
+            layout="@layout/layout_working_people"
+            android:layout_marginHorizontal="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tab_working_break"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp" />
 
-        <include layout="@layout/layout_working_people" />
 
-    </LinearLayout>
+    </RelativeLayout>
 </FrameLayout>

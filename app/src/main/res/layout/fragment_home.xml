@@ -38,7 +38,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/dots"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:src="@drawable/outline_more_horiz_black" />
@@ -62,9 +62,9 @@
                 android:weightSum="2">
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/swipe_left"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:src="@drawable/outline_swipe_left_black" />
 
                 <TextView
@@ -75,7 +75,7 @@
                     android:layout_marginRight="5dp"
                     android:text="@string/find_new_place"
                     android:textAlignment="center"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -91,9 +91,9 @@
                 android:weightSum="2">
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/swipe_right"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:src="@drawable/outline_swipe_right_black" />
 
                 <TextView
@@ -104,7 +104,7 @@
                     android:layout_marginRight="5dp"
                     android:text="@string/connect_new_people"
                     android:textAlignment="center"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
 

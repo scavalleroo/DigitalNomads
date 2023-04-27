@@ -54,10 +54,8 @@
                 <ImageView
                     android:id="@+id/imageWorkingPartner"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    tools:srcCompat="@tools:sample/avatars"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/maria_gracia"
                     android:contentDescription="@string/user_profile_image" />
 
             </androidx.cardview.widget.CardView>
@@ -107,7 +105,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:contentDescription="@string/image_place_to_work_from"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:src="@drawable/startbucks" />
 
             </androidx.cardview.widget.CardView>
 

@@ -14,6 +14,10 @@ public class NetworkingViewModel extends ViewModel {
     private ArrayList<String> languages;
     private ArrayList<String> days;
 
+    private int old_filterDistance;
+    private ArrayList<String> old_fields;
+    private ArrayList<String> old_languages;
+    private ArrayList<String> old_days;
     public NetworkingViewModel() {
         users.add(new UserModel("Clara Rodriguez", "today", "Linguistic expert", "Spanish, German, French", R.drawable.clara_rodriguez, 2));
         users.add(new UserModel("Javier Fernandez", "today", "Physic expert", "Spanish, English", R.drawable.javier_fernandez, 3));
@@ -25,6 +29,24 @@ public class NetworkingViewModel extends ViewModel {
         fields = new ArrayList<>();
         languages = new ArrayList<>();
         days = new ArrayList<>();
+
+        old_fields = new ArrayList<>();
+        old_languages = new ArrayList<>();
+        old_days = new ArrayList<>();
+    }
+
+    public void save() {
+        old_days = new ArrayList<String>(days);
+        old_languages = new ArrayList<String>(languages);
+        old_fields = new ArrayList<String>(fields);
+        old_filterDistance = filterDistance;
+    }
+
+    public void cancel() {
+        days = new ArrayList<String>(old_days);
+        languages = new ArrayList<String>(old_languages);
+        fields = new ArrayList<String>(old_fields);
+        filterDistance = old_filterDistance;
     }
 
     public int getFilterDistance() {

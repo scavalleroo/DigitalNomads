@@ -4,9 +4,10 @@ import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,12 +15,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.digitalnomads.android.R;
 import com.digitalnomads.android.models.UserModel;
@@ -27,40 +30,89 @@ import com.google.android.material.button.MaterialButton;
 
 
 import java.util.ArrayList;
-
-import kotlin.jvm.JvmStatic;
+import java.util.zip.Inflater;
 
 public class NetworkingFragment extends Fragment {
 
-    final int widthInDp = 350;
-
+    final int widthInDp = 310;
     private NetworkingViewModel mViewModel;
+    private TextView txtDays;
+    private TextView txtFields;
+    private TextView txtDistance;
+    private TextView txtLanguage;
+    private boolean popUpOpen = false;
+    private LinearLayout listWorkingPeople;
+    private LinearLayout.LayoutParams layoutParams;
+    private LayoutInflater inflater;
 
     public static NetworkingFragment newInstance() {
         return new NetworkingFragment();
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater_param, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         mViewModel = new ViewModelProvider(this).get(NetworkingViewModel.class);
-
+        this.inflater = inflater_param;
         View view = inflater.inflate(R.layout.fragment_netwroking, container, false);
-        LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.list_working_people);
+        listWorkingPeople = (LinearLayout) view.findViewById(R.id.list_working_people);
+        txtDays = (TextView) view.findViewById(R.id.txt_day);
+        txtDistance = (TextView) view.findViewById(R.id.txt_distance);
+        txtFields = (TextView) view.findViewById(R.id.txt_fields);
+        txtLanguage = (TextView) view.findViewById(R.id.txt_languages);
 
         // Creation of the cards
         float scale = getResources().getDisplayMetrics().density;
         int widthInPixels = (int) (widthInDp * scale + 0.5f);
+        layoutParams = new LinearLayout.LayoutParams(
+                widthInPixels, // width in pixels or dp
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        buildCards();
 
+        // Reference the UI element using findViewById()
+        Button filter = (Button) view.findViewById(R.id.button_filter_networking);
+
+        filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View viewClick) {
+                View popupView = LayoutInflater.from(viewClick.getContext()).inflate(R.layout.filter_popup, null);
+                ImageView closeButton = popupView.findViewById(R.id.close_popup);
+                Button btnSave = popupView.findViewById(R.id.save);
+
+                handleFilterButtons(popupView);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(viewClick.getContext());
+                builder.setView(popupView);
+                AlertDialog filterPopup = builder.create();
+
+                // Set an OnClickListener on the close button to dismiss the popup
+                closeButton.setOnClickListener(v -> {
+                    filterPopup.dismiss();
+                    mViewModel.cancel();
+                    setTextFilter();
+                });
+
+                btnSave.setOnClickListener(v -> {
+                    filterPopup.dismiss();
+                    mViewModel.save();
+                    setTextFilter();
+                });
+
+                filterPopup.show();
+            }
+        });
+
+        return view;
+    }
+
+    private void buildCards() {
+        listWorkingPeople.removeAllViews();
         for (int i = 0; i < mViewModel.users.size(); i++) {
-            UserModel user = mViewModel.users.get(i);
-
             View card_working_person = inflater.inflate(R.layout.card_working_person, null);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                    widthInPixels, // width in pixels or dp
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            );
             card_working_person.setLayoutParams(layoutParams);
+
+            UserModel user = mViewModel.users.get(i);
 
             // Setting the image of the card
             ImageView image = (ImageView) card_working_person.findViewById(R.id.imageWorkingPartner);
@@ -86,32 +138,58 @@ public class NetworkingFragment extends Fragment {
             TextView languages = (TextView) card_working_person.findViewById(R.id.languages);
             languages.setText("Languages " + user.getLanguages());
 
-            linearLayout.addView(card_working_person);
+            // Add swipe up gesture
+            int finalI = i;
+            card_working_person.setOnTouchListener(new View.OnTouchListener() {
+                private float startY;
+                float distance;
+
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    float endY;
+                    float distance;
+                    if(!popUpOpen) {
+                        switch (event.getAction()) {
+                            case MotionEvent.ACTION_DOWN:
+                                // Record the starting position of the touch
+                                startY = event.getY();
+                                break;
+                            case MotionEvent.ACTION_MOVE:
+                                // Calculate the distance of the swipe as the user's finger moves
+                                float currentY = event.getY();
+                                distance = currentY - startY;
+
+                                // If the swipe distance is greater than a threshold, show the pop up
+                                if (distance < -200) {
+                                    sendRequest(v.getContext(), user, finalI);
+                                }
+                                break;
+                            case MotionEvent.ACTION_CANCEL:
+                            case MotionEvent.ACTION_UP:
+                                // Calculate the final distance of the swipe when the user lifts their finger
+                                endY = event.getY();
+                                distance = endY - startY;
+
+                                // If the swipe distance is greater than a threshold, show the pop up
+                                if (distance < -200) {
+                                    sendRequest(v.getContext(), user, finalI);
+                                }
+                                break;
+                        }
+                    }
+                    return true;
+                }
+            });
+
+            listWorkingPeople.addView(card_working_person);
         }
+    }
 
-        // Reference the UI element using findViewById()
-        Button filter = (Button) view.findViewById(R.id.button_filter_networking);
-
-        filter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                View popupView = LayoutInflater.from(view.getContext()).inflate(R.layout.filter_popup, null);
-                ImageView closeButton = popupView.findViewById(R.id.close_popup);
-
-                handleFilterButtons(popupView);
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                builder.setView(popupView);
-                AlertDialog filterPopup = builder.create();
-
-                // Set an OnClickListener on the close button to dismiss the popup
-                closeButton.setOnClickListener(v -> filterPopup.dismiss());
-
-                filterPopup.show();
-            }
-        });
-
-        return view;
+    private void setTextFilter() {
+        txtDays.setText(!mViewModel.getDays().isEmpty() ? String.join(", ", mViewModel.getDays().toArray(new String[0])) : "");
+        txtDistance.setText(mViewModel.getFilterDistance() != 0 ? mViewModel.getFilterDistance()  + " km" : "");
+        txtFields.setText(!mViewModel.getFields().isEmpty() ? String.join(", ", mViewModel.getFields().toArray(new String[0]))  : "");
+        txtLanguage.setText(!mViewModel.getLanguages().isEmpty() ? String.join(", ", mViewModel.getLanguages().toArray(new String[0]))  : "");
     }
 
     public void handleFilterButtons(View popupView) {
@@ -246,6 +324,38 @@ public class NetworkingFragment extends Fragment {
         mViewModel.setFilterDistance(filterDistance);
         mViewModel.setLanguages(languages);
         mViewModel.setDays(days);
+    }
+
+    private void sendRequest(Context context, UserModel user, int index) {
+        // Define the text for the pop up
+        this.popUpOpen = true;
+        String message = "Are you sure you want to send the request to " + user.getFullName() + "?";
+
+        // Build the alert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage(message)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User clicked Yes button
+                        // Do something here
+                        mViewModel.users.remove(index);
+                        buildCards();
+                        dialog.cancel();
+                        Toast.makeText(context, "Request sent to " + user.getFullName(), Toast.LENGTH_SHORT).show();
+                        popUpOpen = false;
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User clicked Cancel button
+                        dialog.cancel();
+                        popUpOpen = false;
+                    }
+                });
+
+        // Show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 }

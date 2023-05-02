@@ -1,5 +1,7 @@
 package com.digitalnomads.android.models;
 
+import java.util.ArrayList;
+
 public class UserModel {
     private String fullName;
     private String availability;
@@ -15,6 +17,23 @@ public class UserModel {
         this.languages = languages;
         this.idImage = idImage;
         this.yearsOfExperience = yearsOfExperience;
+    }
+
+
+    public boolean passFilter(ArrayList<String> fields, ArrayList<String> languages, ArrayList<String> availabilities, int distance) {
+        if(!fields.isEmpty() && !fields.contains(fields) || !availabilities.isEmpty() && !availabilities.contains(this.availability)) {
+            return false;
+        }
+        if(!languages.isEmpty()) {
+            String[] arr = this.languages.split(",");
+            for (String s : arr) {
+                if (languages.contains(s)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        return true;
     }
 
 

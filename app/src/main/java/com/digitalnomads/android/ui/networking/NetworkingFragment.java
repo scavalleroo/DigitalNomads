@@ -96,6 +96,7 @@ public class NetworkingFragment extends Fragment {
                 btnSave.setOnClickListener(v -> {
                     filterPopup.dismiss();
                     mViewModel.save();
+                    buildCards();
                     setTextFilter();
                 });
 
@@ -338,7 +339,7 @@ public class NetworkingFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int id) {
                         // User clicked Yes button
                         // Do something here
-                        mViewModel.users.remove(index);
+                        mViewModel.sendRequest(index);
                         buildCards();
                         dialog.cancel();
                         Toast.makeText(context, "Request sent to " + user.getFullName(), Toast.LENGTH_SHORT).show();

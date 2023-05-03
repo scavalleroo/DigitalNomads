@@ -1,0 +1,132 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_requested_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Requested to"
+            android:textAlignment="textStart"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/request_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="textStart"
+            android:textSize="18dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardWorkingPartner"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/txt_requested_to"
+            android:elevation="12dp"
+            android:innerRadius="0dp"
+            app:cardCornerRadius="40dp">
+
+            <ImageView
+                android:id="@+id/imageWorkingPartner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:contentDescription="@string/user_profile_image"
+                android:src="@drawable/maria_gracia" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/workingPartnerFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_requested_to"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_toEndOf="@+id/cardWorkingPartner"
+            android:gravity="center_horizontal"
+            android:textAlignment="center"
+            android:textSize="18dp" />
+
+
+        <TextView
+            android:layout_below="@id/cardWorkingPartner"
+            android:id="@+id/field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/year_of_experience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@id/field"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/languages"
+            android:layout_below="@id/year_of_experience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/no_place_suggested"
+            android:layout_below="@id/languages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:text="No place suggested"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:layout_below="@id/no_place_suggested"
+            android:id="@+id/swipe_up"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/outline_swipe_up_black" />
+
+        <TextView
+            android:layout_below="@id/swipe_up"
+            android:id="@+id/send_request_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="15dp"
+            android:text="Suggest a place"
+            android:textAlignment="center"
+            android:textSize="14dp" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

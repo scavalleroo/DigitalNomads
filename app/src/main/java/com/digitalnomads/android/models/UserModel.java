@@ -7,6 +7,7 @@ public class UserModel {
     private String availability;
     private String field;
     private String languages;
+    private String requestStatus;
     private int idImage;
     private int yearsOfExperience;
 
@@ -17,6 +18,11 @@ public class UserModel {
         this.languages = languages;
         this.idImage = idImage;
         this.yearsOfExperience = yearsOfExperience;
+    }
+
+    public UserModel(String fullName, String availability, String field, String languages, int idImage, int yearsOfExperience, String requestStatus) {
+        this(fullName, availability, field, languages, idImage, yearsOfExperience);
+        this.requestStatus = requestStatus;
     }
 
 
@@ -83,5 +89,13 @@ public class UserModel {
 
     public void setYearsOfExperience(int yearsOfExperience) {
         this.yearsOfExperience = yearsOfExperience;
+    }
+
+    public String getRequestStatus() {
+        return requestStatus;
+    }
+
+    public void setRequestStatus(String requestStatus) {
+        this.requestStatus = requestStatus;
     }
 }

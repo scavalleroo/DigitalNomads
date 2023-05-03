@@ -3,11 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal|center_vertical"
+    android:foregroundGravity="center|center_horizontal"
     tools:context=".ui.places.PlaceFragment">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/this_page_is_under_construction"
+        android:textAlignment="gravity"
+        android:textSize="20sp" />
 
 </FrameLayout>

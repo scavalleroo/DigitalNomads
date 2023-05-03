@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/navigation_places"
         android:name="com.digitalnomads.android.ui.places.PlaceFragment"
-        android:label="@string/title_networking"
+        android:label="Working Places"
         tools:layout="@layout/fragment_place" />
 
     <fragment

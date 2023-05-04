@@ -13,8 +13,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +28,11 @@ import android.widget.Toast;
 
 import com.digitalnomads.android.R;
 import com.digitalnomads.android.models.UserModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class NetworkingFragment extends Fragment {
 
@@ -54,7 +56,7 @@ public class NetworkingFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         mViewModel = new ViewModelProvider(this).get(NetworkingViewModel.class);
         this.inflater = inflater_param;
-        View view = inflater.inflate(R.layout.fragment_netwroking, container, false);
+        View view = inflater.inflate(R.layout.fragment_networking, container, false);
         listWorkingPeople = (LinearLayout) view.findViewById(R.id.list_working_people);
         txtDays = (TextView) view.findViewById(R.id.txt_day);
         txtDistance = (TextView) view.findViewById(R.id.txt_distance);

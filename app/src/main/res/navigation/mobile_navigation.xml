@@ -3,29 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/fragment_home">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/fragment_home"
         android:name="com.digitalnomads.android.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_networking"
+        android:id="@+id/fragment_networking"
         android:name="com.digitalnomads.android.ui.networking.NetworkingFragment"
         android:label="@string/title_networking"
-        tools:layout="@layout/fragment_netwroking" />
+        tools:layout="@layout/fragment_networking" >
+
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_places"
+        android:id="@+id/fragment_places"
         android:name="com.digitalnomads.android.ui.places.PlaceFragment"
         android:label="Working Places"
-        tools:layout="@layout/fragment_place" />
+        tools:layout="@layout/fragment_place">
+
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/fragment_notifications"
         android:name="com.digitalnomads.android.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_notifications">
+
+    </fragment>
 </navigation>

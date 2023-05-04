@@ -35,6 +35,9 @@
         android:id="@+id/slider_distance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:valueFrom="5"
+        android:valueTo="50"
+        android:stepSize="5"
         android:tooltipText="Select the range"
         android:contentDescription="Select the range" />
 

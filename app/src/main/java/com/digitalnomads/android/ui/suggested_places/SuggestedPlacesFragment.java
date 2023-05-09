@@ -2,7 +2,6 @@ package com.digitalnomads.android.ui.suggested_places;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.AlertDialog;
@@ -11,15 +10,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -28,10 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.digitalnomads.android.R;
-import com.digitalnomads.android.databinding.ActivityMainBinding;
 import com.digitalnomads.android.models.PlaceModel;
-import com.digitalnomads.android.ui.notifications.NotificationsFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
@@ -136,7 +125,7 @@ public class SuggestedPlacesFragment extends Fragment {
             image.setImageDrawable(getResources().getDrawable(place.getIdMainImage(), null));
 
             // Setting the name of the card
-            TextView name = (TextView) card_places.findViewById(R.id.PlaceToWorkName);
+            TextView name = (TextView) card_places.findViewById(R.id.placeToWorkName);
             name.setText(place.getName());
 
             // Setting the address of the card

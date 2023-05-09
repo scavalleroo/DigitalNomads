@@ -1,10 +1,13 @@
 package com.digitalnomads.android;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import com.digitalnomads.android.ui.notifications.NotificationsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -34,4 +37,20 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+//            NotificationsFragment notificationsFragment = new NotificationsFragment();
+//            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//            fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, notificationsFragment, "NotificationFragment");
+//            fragmentTransaction.addToBackStack(null);
+//            fragmentTransaction.setReorderingAllowed(true);
+//            fragmentTransaction.commit();
+            onBackPressed();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
 }

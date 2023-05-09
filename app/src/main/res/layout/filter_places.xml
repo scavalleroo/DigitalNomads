@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
+
+    <ImageView
+        android:id="@+id/close_popup"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="5dp"
+        android:contentDescription="Close button"
+        app:srcCompat="@drawable/outline_close_black" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Filters"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/set_seats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Number of seats"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/min_seats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="18sp" />
+
+        <com.google.android.material.slider.RangeSlider
+            android:id="@+id/slider_seats"
+            android:layout_width="333dp"
+            android:layout_height="wrap_content"
+            android:valueFrom="1"
+            android:valueTo="10"
+            android:stepSize="1"
+            android:contentDescription="Select the seats"
+            android:tooltipText="Select the seats" />
+
+        <TextView
+            android:id="@+id/max_seats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="10"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/select_techFeatures"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Tech Features"
+        android:textSize="18sp" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_tech_list"
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/WiFi_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/white"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp"
+                        android:text="WiFi"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/usb_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/white"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp"
+                        android:text="USB Charger"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/sockets_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/white"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp"
+                        android:text="Sockets"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/charger_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/white"
+                        android:foregroundTint="@color/white"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp"
+                        android:text="Wireless Charger"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        app:toggleCheckedStateOnClick="true" />
+
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <TextView
+        android:id="@+id/select_rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Select rating"
+        android:textSize="18sp" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_rating_list"
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/rating1_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/white"
+                        android:drawableLeft="@drawable/reviews"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp"
+                        android:text="1"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/rating2_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/white"
+                        android:drawableLeft="@drawable/reviews"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp"
+                        android:text="2"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/rating3_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/white"
+                        android:drawableLeft="@drawable/reviews"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp"
+                        android:text="3"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/rating4_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/white"
+                        android:drawableLeft="@drawable/reviews"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp"
+                        android:text="4+"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp" />
+
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <TextView
+        android:id="@+id/select_offers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Select offers"
+        android:textSize="18sp" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_offers_list"
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/offers_digitalNomads"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        android:textAllCaps="false"
+                        android:text="For digital nomads" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/offers_families"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        android:textAllCaps="false"
+                        android:text="For families" />
+
+
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/select_distance_option"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Select distance option"
+        android:textSize="18sp" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_distance_list"
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/closest_you"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        android:textAllCaps="false"
+                        android:text="Closest to you" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/closest_both"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/soft_grey"
+                        app:strokeWidth="1dp"
+                        android:textAllCaps="false"
+                        android:text="Closest to both" />
+
+
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <Button
+        android:id="@+id/save"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="10dp"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/soft_grey"
+        app:strokeWidth="1dp"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:text="Save"
+        android:textSize="16dp" />
+
+</LinearLayout>

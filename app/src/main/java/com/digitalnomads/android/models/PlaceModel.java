@@ -1,17 +1,17 @@
 package com.digitalnomads.android.models;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class PlaceModel {
     private String name;
     private String address;
     private String openingsHours;
     private String extra;
-    private List<Integer> idsImage;
+    private ArrayList<Integer> idsImage;
     private int idMainImage;
-    private float stars;
+    private double stars;
 
-    public PlaceModel(String name, String address, String openingsHours, String extra, List<Integer> idsImage, int idMainImage, float stars) {
+    public PlaceModel(String name, String address, String openingsHours, String extra, ArrayList<Integer> idsImage, int idMainImage, double stars) {
         this.name = name;
         this.address = address;
         this.openingsHours = openingsHours;
@@ -53,11 +53,11 @@ public class PlaceModel {
         this.extra = extra;
     }
 
-    public List<Integer> getIdsImage() {
+    public ArrayList<Integer> getIdsImage() {
         return idsImage;
     }
 
-    public void setIdsImage(List<Integer> idsImage) {
+    public void setIdsImage(ArrayList<Integer> idsImage) {
         this.idsImage = idsImage;
     }
 
@@ -69,11 +69,11 @@ public class PlaceModel {
         this.idMainImage = idMainImage;
     }
 
-    public float getStars() {
+    public double getStars() {
         return stars;
     }
 
-    public void setStars(float stars) {
+    public void setStars(double stars) {
         this.stars = stars;
     }
 }

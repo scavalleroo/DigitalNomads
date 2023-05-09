@@ -36,4 +36,12 @@
         tools:layout="@layout/fragment_notifications">
 
     </fragment>
+
+    <fragment
+        android:id="@+id/fragment_suggest_place"
+        android:name="com.digitalnomads.android.ui.suggested_places.SuggestedPlacesFragment"
+        android:label="Suggest Place"
+        tools:layout="@layout/fragment_suggested_places">
+
+    </fragment>
 </navigation>

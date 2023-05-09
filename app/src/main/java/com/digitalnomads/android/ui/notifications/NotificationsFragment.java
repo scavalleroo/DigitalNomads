@@ -1,7 +1,5 @@
 package com.digitalnomads.android.ui.notifications;
 
-import android.app.AlertDialog;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -15,12 +13,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.digitalnomads.android.R;
-import com.digitalnomads.android.databinding.FragmentNotificationsBinding;
 import com.digitalnomads.android.models.UserModel;
-import com.digitalnomads.android.ui.networking.NetworkingViewModel;
+import com.digitalnomads.android.ui.suggested_places.SuggestedPlacesFragment;
 
 public class NotificationsFragment extends Fragment {
 
@@ -113,7 +111,7 @@ public class NotificationsFragment extends Fragment {
 
                                 // If the swipe distance is greater than a threshold, show the pop up
                                 if (distance < -200) {
-                                    // sendRequest(v.getContext(), user, finalI);
+                                    suggestPlace();
                                 }
                                 break;
                             case MotionEvent.ACTION_CANCEL:
@@ -124,7 +122,7 @@ public class NotificationsFragment extends Fragment {
 
                                 // If the swipe distance is greater than a threshold, show the pop up
                                 if (distance < -200) {
-                                    //sendRequest(v.getContext(), user, finalI);
+                                    suggestPlace();
                                 }
                                 break;
                         }
@@ -135,6 +133,15 @@ public class NotificationsFragment extends Fragment {
 
             listNotificationPeople.addView(card_working_person);
         }
+    }
+
+    private void suggestPlace() {
+        SuggestedPlacesFragment suggestionFragment = new SuggestedPlacesFragment();
+        FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, suggestionFragment, "SuggestionFragment");
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.commit();
     }
 
 }

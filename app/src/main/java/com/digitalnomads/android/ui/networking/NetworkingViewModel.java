@@ -21,12 +21,12 @@ public class NetworkingViewModel extends ViewModel {
 
     ArrayList<UserModel> old_users;
     public NetworkingViewModel() {
-        users.add(new UserModel("Clara Rodriguez", "Friday 17", "UI Design", "Spanish, English, Greek", R.drawable.clara_rodriguez, 2, 10));
-        users.add(new UserModel("Javier Fernandez", "Saturday 18", "Physics", "Spanish, English", R.drawable.javier_fernandez, 3, 12));
-        users.add(new UserModel("Lucia Smith", "Friday 17", "Data Science", "English, Russian", R.drawable.lucia_smith, 4, 4));
-        users.add(new UserModel("Maria Gracia", "Sunday 19", "Engineering", "English, Greek", R.drawable.maria_gracia, 5, 3));
-        users.add(new UserModel("Mark Brown", "Monday 20", "UI Design", "Spanish", R.drawable.mark_brown, 3, 9));
-        users.add(new UserModel("Monica Rocamura", "Monday 20", "Engineering", "Spanish, Russian", R.drawable.monica_rocamura, 4, 7));
+        users.add(new UserModel("Javier Fernandez", "Saturday 18", "Physics", "Spanish, English", R.drawable.javier_fernandez, 3, 2));
+        users.add(new UserModel("Clara Rodriguez", "Friday 17", "UI Design", "Spanish, English, Greek", R.drawable.clara_rodriguez, 2, 2));
+        users.add(new UserModel("Maria Gracia", "Sunday 19", "Engineering", "English, Greek", R.drawable.maria_gracia, 8, 3));
+        users.add(new UserModel("Mark Brown", "Monday 20", "UI Design", "Spanish", R.drawable.mark_brown, 3, 5));
+        users.add(new UserModel("Luca Smith", "Friday 17", "UI Design", "English, Russian", R.drawable.lucia_smith, 10, 4));
+        users.add(new UserModel("Monica Rocamura", "Monday 20", "Engineering", "Spanish, Russian", R.drawable.monica_rocamura, 4, 3));
         old_users = new ArrayList<UserModel>(users);
 
         fields = new ArrayList<>();

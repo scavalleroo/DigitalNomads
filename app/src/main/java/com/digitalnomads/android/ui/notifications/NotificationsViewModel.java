@@ -14,9 +14,8 @@ public class NotificationsViewModel extends ViewModel {
     ArrayList<UserModel> users = new ArrayList<UserModel>(6);
 
     public NotificationsViewModel() {
-        users.add(new UserModel("Javier Fernandez", "today", "Physic expert", "Spanish, English", R.drawable.javier_fernandez, 3, 3, "Waiting"));
-        users.add(new UserModel("Lucia Smith", "today", "Data Science student", "English, German", R.drawable.lucia_smith, 4, 5, "Waiting"));
-        users.add(new UserModel("Maria Gracia", "today", "Politics and Economics", "Spanish, English", R.drawable.maria_gracia, 5, 6,"Expired"));
-        users.add(new UserModel("Mark Brown", "today", "UI Design", "English", R.drawable.mark_brown, 3, 7, "Expired"));
+        users.add(new UserModel("Luca Smith", "Friday 17", "UI Design", "English, Russian", R.drawable.lucia_smith, 10, 4, "Accepted"));
+        users.add(new UserModel("Mark Brown", "Monday 20", "UI Design", "Spanish", R.drawable.mark_brown, 3, 5, "Expired"));
+        users.add(new UserModel("Monica Rocamura", "Monday 20", "Engineering", "Spanish, Russian", R.drawable.monica_rocamura, 4, 3, "Expired"));
     }
 }

@@ -141,7 +141,12 @@ public class SuggestedPlacesFragment extends Fragment {
     private void setTextFilter() {
         txtClosestTo.setText(!mViewModel.getDistance().isEmpty() ? String.join(", ", mViewModel.getDistance().toArray(new String[0])) : "");
         txtSeats.setText(mViewModel.getNumberSeats() != 0 ? mViewModel.getNumberSeats()  + " seats" : "");
-        txtRating.setText(!mViewModel.getRating().isEmpty() ? String.join(",", mViewModel.getRating().stream().map(Object::toString).toArray(String[]::new)) : "");
+        txtRating.setText(!mViewModel.getRating().isEmpty()
+                ? String.join(", ", mViewModel.getRating().stream()
+                .map(Object::toString)
+                .map(s -> s + "+")
+                .toArray(String[]::new))
+                : "");
         txtOffers.setText(!mViewModel.getOffers().isEmpty() ? String.join(", ", mViewModel.getOffers().toArray(new String[0]))  : "");
         txtTechFeatures.setText(!mViewModel.getFeatures().isEmpty() ? String.join(", ", mViewModel.getFeatures().toArray(new String[0]))  : "");
     }
@@ -391,10 +396,10 @@ public class SuggestedPlacesFragment extends Fragment {
                 result = selected ? ratings.add(4) : ratings.remove((Integer) 4);
                 break;
             case R.id.offers_digitalNomads:
-                result = selected ? offers.add("For digital nomads") : offers.remove("For digital nomads");
+                result = selected ? offers.add("Digital Nomads") : offers.remove("Digital Nomads");
                 break;
             case R.id.offers_families:
-                result = selected ? offers.add("For families") : offers.remove("For families");
+                result = selected ? offers.add("Families") : offers.remove("Families");
                 break;
             case R.id.closest_you:
                 result = selected ? distance.add("Closest to you") : distance.remove("Closest to you");

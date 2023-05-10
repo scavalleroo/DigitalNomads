@@ -29,7 +29,7 @@ public class UserModel {
 
 
     public boolean passFilter(ArrayList<String> fields, ArrayList<String> languages, ArrayList<String> availabilities, int distance) {
-        if(!fields.isEmpty() && !fields.contains(fields) || !availabilities.isEmpty() && !availabilities.contains(this.availability)) {
+        if(!fields.isEmpty() && !fields.contains(this.field) || !availabilities.isEmpty() && !availabilities.contains(this.availability)) {
             return false;
         }
         if(!languages.isEmpty()) {

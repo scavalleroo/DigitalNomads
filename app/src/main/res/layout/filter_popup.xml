@@ -31,15 +31,42 @@
         android:text="Set the distance"
         android:textSize="18sp" />
 
-    <com.google.android.material.slider.RangeSlider
-        android:id="@+id/slider_distance"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:valueFrom="5"
-        android:valueTo="50"
-        android:stepSize="5"
-        android:tooltipText="Select the range"
-        android:contentDescription="Select the range" />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/min_seats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4km"
+            android:textSize="18sp" />
+
+        <com.google.android.material.slider.RangeSlider
+            android:id="@+id/slider_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/min_seats"
+            android:layout_toLeftOf="@id/max_seats"
+            android:valueFrom="4"
+            android:valueTo="20"
+            android:stepSize="2"
+            android:layout_marginHorizontal="5dp"
+            android:tooltipText="Select the range"
+            android:contentDescription="Select the range" />
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/max_seats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20km"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/select_field"

@@ -12,13 +12,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.digitalnomads.android.R;
+import com.digitalnomads.android.models.PlaceModel;
 import com.digitalnomads.android.models.UserModel;
 import com.digitalnomads.android.ui.suggested_places.SuggestedPlacesFragment;
+import com.google.android.material.tabs.TabLayout;
 
 public class NotificationsFragment extends Fragment {
 
@@ -29,12 +34,86 @@ public class NotificationsFragment extends Fragment {
     private LayoutInflater inflater;
     private boolean popUpOpen = false;
 
+    private boolean suggestionSent = false;
+    private UserModel userSent;
+    private PlaceModel placeSent;
+
+    public NotificationsFragment() {}
+    public NotificationsFragment(boolean suggestionSent, UserModel userSent, PlaceModel placeSent) {
+        this.suggestionSent = suggestionSent;
+        this.userSent = userSent;
+        this.placeSent = placeSent;
+    }
+
 
     public View onCreateView(@NonNull LayoutInflater inflater_param,
                              ViewGroup container, Bundle savedInstanceState) {
         nViewModel = new ViewModelProvider(this).get(NotificationsViewModel.class);
         this.inflater = inflater_param;
         View view = inflater.inflate(R.layout.fragment_notifications, container, false);
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setTitle("Notifications");
+        }
+        // Tab Layout handler
+        TabLayout tabLayout = view.findViewById(R.id.tab_incoming_sent);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                // This method is called when a tab is selected.
+                // You can get the position of the tab like this:
+                int position = tab.getPosition();
+
+                // Then, you can do something based on the position of the tab, such as show a different fragment.
+                switch (position) {
+                    case 0:
+                        view.findViewById(R.id.include_layout).setVisibility(View.VISIBLE);
+                        view.findViewById(R.id.sent_text).setVisibility(View.INVISIBLE);
+                        view.findViewById(R.id.layout_card_suggestion_sent).setVisibility(View.INVISIBLE);
+                        break;
+                    case 1:
+                        if(suggestionSent) {
+                            view.findViewById(R.id.include_layout).setVisibility(View.INVISIBLE);
+                            view.findViewById(R.id.sent_text).setVisibility(View.INVISIBLE);
+                            CardView cardSuggestionSent = (CardView) view.findViewById(R.id.layout_card_suggestion_sent);
+                            cardSuggestionSent.setVisibility(View.VISIBLE);
+                            ((TextView) cardSuggestionSent.findViewById(R.id.dateWorkingSession)).setText("Today");
+
+                            ImageView imageUser = (ImageView) cardSuggestionSent.findViewById(R.id.imageWorkingPartner);
+                            imageUser.setImageDrawable(getResources().getDrawable(userSent.getIdImage(), null));
+
+                            ((TextView) cardSuggestionSent.findViewById(R.id.workingPartnerFullName)).setText(userSent.getFullName());
+
+                            ImageView imagePlace = (ImageView) cardSuggestionSent.findViewById(R.id.imageWorkingPlace);
+                            imagePlace.setImageDrawable(getResources().getDrawable(placeSent.getIdMainImage(), null));
+
+                            ((TextView) cardSuggestionSent.findViewById(R.id.workingPlaceName)).setText(placeSent.getName());
+                            ((TextView) cardSuggestionSent.findViewById(R.id.workingPlaceAddress)).setText(placeSent.getAddress());
+                        } else {
+                            view.findViewById(R.id.include_layout).setVisibility(View.INVISIBLE);
+                            view.findViewById(R.id.sent_text).setVisibility(View.VISIBLE);
+                            view.findViewById(R.id.layout_card_suggestion_sent).setVisibility(View.INVISIBLE);
+                        }
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                // This method is called when a tab is unselected.
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                // This method is called when a tab is reselected.
+            }
+        });
+
+        if(suggestionSent) {
+            tabLayout.getTabAt(1).select();
+        }
+
         listNotificationPeople = (LinearLayout) view.findViewById(R.id.list_notifications);
 
         float scale = getResources().getDisplayMetrics().density;
@@ -111,7 +190,7 @@ public class NotificationsFragment extends Fragment {
 
                                 // If the swipe distance is greater than a threshold, show the pop up
                                 if (distance < -200) {
-                                    suggestPlace();
+                                    suggestPlace(user);
                                 }
                                 break;
                             case MotionEvent.ACTION_CANCEL:
@@ -122,7 +201,7 @@ public class NotificationsFragment extends Fragment {
 
                                 // If the swipe distance is greater than a threshold, show the pop up
                                 if (distance < -200) {
-                                    suggestPlace();
+                                    suggestPlace(user);
                                 }
                                 break;
                         }
@@ -135,8 +214,8 @@ public class NotificationsFragment extends Fragment {
         }
     }
 
-    private void suggestPlace() {
-        SuggestedPlacesFragment suggestionFragment = new SuggestedPlacesFragment();
+    private void suggestPlace(UserModel userSelected) {
+        SuggestedPlacesFragment suggestionFragment = new SuggestedPlacesFragment(userSelected);
         FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, suggestionFragment, "SuggestionFragment");
         fragmentTransaction.addToBackStack(null);

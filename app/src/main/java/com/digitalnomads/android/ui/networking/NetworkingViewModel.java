@@ -9,24 +9,24 @@ import java.util.ArrayList;
 
 public class NetworkingViewModel extends ViewModel {
     ArrayList<UserModel> users = new ArrayList<UserModel>(6);
-    private int filterDistance;
+    private int filterDistance = 20;
     private ArrayList<String> fields;
     private ArrayList<String> languages;
     private ArrayList<String> days;
 
-    private int old_filterDistance;
+    private int old_filterDistance = 20;
     private ArrayList<String> old_fields;
     private ArrayList<String> old_languages;
     private ArrayList<String> old_days;
 
     ArrayList<UserModel> old_users;
     public NetworkingViewModel() {
-        users.add(new UserModel("Clara Rodriguez", "today", "Linguistic expert", "Spanish, German, French", R.drawable.clara_rodriguez, 2));
-        users.add(new UserModel("Javier Fernandez", "today", "Physic expert", "Spanish, English", R.drawable.javier_fernandez, 3));
-        users.add(new UserModel("Lucia Smith", "today", "Data Science student", "English, German", R.drawable.lucia_smith, 4));
-        users.add(new UserModel("Maria Gracia", "today", "Politics and Economics", "Spanish, English", R.drawable.maria_gracia, 5));
-        users.add(new UserModel("Mark Brown", "today", "UI Design", "English", R.drawable.mark_brown, 3));
-        users.add(new UserModel("Monica Rocamura", "today", "Musician", "Spanish, English", R.drawable.monica_rocamura, 4));
+        users.add(new UserModel("Clara Rodriguez", "Friday 17", "UI Design", "Spanish, English, Greek", R.drawable.clara_rodriguez, 2, 10));
+        users.add(new UserModel("Javier Fernandez", "Saturday 18", "Physics", "Spanish, English", R.drawable.javier_fernandez, 3, 12));
+        users.add(new UserModel("Lucia Smith", "Friday 17", "Data Science", "English, Russian", R.drawable.lucia_smith, 4, 4));
+        users.add(new UserModel("Maria Gracia", "Sunday 19", "Engineering", "English, Greek", R.drawable.maria_gracia, 5, 3));
+        users.add(new UserModel("Mark Brown", "Monday 20", "UI Design", "Spanish", R.drawable.mark_brown, 3, 9));
+        users.add(new UserModel("Monica Rocamura", "Monday 20", "Engineering", "Spanish, Russian", R.drawable.monica_rocamura, 4, 7));
         old_users = new ArrayList<UserModel>(users);
 
         fields = new ArrayList<>();
@@ -57,9 +57,6 @@ public class NetworkingViewModel extends ViewModel {
             UserModel user = this.users.get(i);
             if (!user.passFilter(fields, languages, days, filterDistance)) {
                 this.users.remove(i); // remove the user from the ArrayList
-                System.out.println("Hello");
-            } else {
-                System.out.println("Hello World");
             }
         }
     }

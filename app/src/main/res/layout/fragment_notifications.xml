@@ -31,6 +31,7 @@
         </com.google.android.material.tabs.TabLayout>
 
         <include
+            android:id="@+id/include_layout"
             layout="@layout/layout_notifications"
             android:layout_marginHorizontal="10dp"
             android:layout_width="match_parent"
@@ -39,6 +40,24 @@
             android:layout_alignParentBottom="true"
             android:layout_marginTop="10dp" />
 
+        <TextView
+            android:id="@+id/sent_text"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="20dp"
+            android:text="@string/this_page_is_under_construction" />
+
+        <include
+            android:visibility="invisible"
+            android:id="@+id/layout_card_suggestion_sent"
+            layout="@layout/card_suggestion_sent"
+            android:layout_marginHorizontal="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tab_incoming_sent"
+            android:layout_marginTop="10dp" />
 
     </RelativeLayout>
 

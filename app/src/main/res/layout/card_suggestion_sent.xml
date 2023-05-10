@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/you_are_going_to_work_with"
+            android:text="You suggested to"
             android:textSize="18sp" />
 
         <LinearLayout
@@ -78,7 +78,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="@string/where"
+            android:text="To work from"
             android:textSize="20sp" />
 
         <LinearLayout
@@ -110,30 +110,42 @@
 
             </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/workingPlaceName"
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="@string/working_place_name"
-                android:textAlignment="center"
-                android:textSize="18sp" />
-        </LinearLayout>
+                android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:contentDescription="@string/swipe_up_icon"
-            app:srcCompat="@drawable/outline_swipe_up_black" />
+                <TextView
+                    android:id="@+id/workingPlaceName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/working_place_name"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/workingPlaceAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/workingPlaceName"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/working_place_name"
+                    android:textAlignment="center"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/swipeUpText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="@string/swipe_up_to_start_the_navigation"
+            android:layout_marginVertical="5dp"
+            android:textSize="18dp"
+            android:text="Waiting for response"
             android:textAlignment="center" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -10,18 +10,20 @@ public class UserModel {
     private String requestStatus;
     private int idImage;
     private int yearsOfExperience;
+    private int distance;
 
-    public UserModel(String fullName, String availability, String field, String languages, int idImage, int yearsOfExperience) {
+    public UserModel(String fullName, String availability, String field, String languages, int idImage, int yearsOfExperience, int distance) {
         this.fullName = fullName;
         this.availability = availability;
         this.field = field;
         this.languages = languages;
         this.idImage = idImage;
         this.yearsOfExperience = yearsOfExperience;
+        this.distance = distance;
     }
 
-    public UserModel(String fullName, String availability, String field, String languages, int idImage, int yearsOfExperience, String requestStatus) {
-        this(fullName, availability, field, languages, idImage, yearsOfExperience);
+    public UserModel(String fullName, String availability, String field, String languages, int idImage, int yearsOfExperience, int distance, String requestStatus) {
+        this(fullName, availability, field, languages, idImage, yearsOfExperience, distance);
         this.requestStatus = requestStatus;
     }
 
@@ -33,13 +35,14 @@ public class UserModel {
         if(!languages.isEmpty()) {
             String[] arr = this.languages.split(",");
             for (String s : arr) {
+                s = s.trim();
                 if (languages.contains(s)) {
-                    return true;
+                    return distance >= this.distance;
                 }
             }
             return false;
         }
-        return true;
+        return distance > this.distance;
     }
 
 

@@ -30,6 +30,8 @@ import com.digitalnomads.android.R;
 import com.digitalnomads.android.models.UserModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.slider.RangeSlider;
+import com.google.android.material.tabs.TabLayout;
 
 
 import java.util.ArrayList;
@@ -57,6 +59,42 @@ public class NetworkingFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(NetworkingViewModel.class);
         this.inflater = inflater_param;
         View view = inflater.inflate(R.layout.fragment_networking, container, false);
+
+        // Tab Layout handler
+        // Tab Layout handler
+        TabLayout tabLayout = view.findViewById(R.id.tab_working_break);
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                // This method is called when a tab is selected.
+                // You can get the position of the tab like this:
+                int position = tab.getPosition();
+
+                // Then, you can do something based on the position of the tab, such as show a different fragment.
+                switch (position) {
+                    case 0:
+                        view.findViewById(R.id.include_layout).setVisibility(View.VISIBLE);
+                        view.findViewById(R.id.sent_text).setVisibility(View.INVISIBLE);
+                        break;
+                    case 1:
+                        view.findViewById(R.id.include_layout).setVisibility(View.INVISIBLE);
+                        view.findViewById(R.id.sent_text).setVisibility(View.VISIBLE);
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                // This method is called when a tab is unselected.
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                // This method is called when a tab is reselected.
+            }
+        });
+
         listWorkingPeople = (LinearLayout) view.findViewById(R.id.list_working_people);
         txtDays = (TextView) view.findViewById(R.id.txt_day);
         txtDistance = (TextView) view.findViewById(R.id.txt_distance);
@@ -75,35 +113,44 @@ public class NetworkingFragment extends Fragment {
         // Reference the UI element using findViewById()
         Button filter = (Button) view.findViewById(R.id.button_filter_networking);
 
-        filter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View viewClick) {
-                View popupView = LayoutInflater.from(viewClick.getContext()).inflate(R.layout.filter_popup, null);
-                ImageView closeButton = popupView.findViewById(R.id.close_popup);
-                Button btnSave = popupView.findViewById(R.id.save);
+        filter.setOnClickListener(viewClick -> {
+            View popupView = LayoutInflater.from(viewClick.getContext()).inflate(R.layout.filter_popup, null);
 
-                handleFilterButtons(popupView);
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(viewClick.getContext());
-                builder.setView(popupView);
-                AlertDialog filterPopup = builder.create();
-
-                // Set an OnClickListener on the close button to dismiss the popup
-                closeButton.setOnClickListener(v -> {
-                    filterPopup.dismiss();
-                    mViewModel.cancel();
-                    setTextFilter();
-                });
-
-                btnSave.setOnClickListener(v -> {
-                    filterPopup.dismiss();
-                    mViewModel.save();
-                    buildCards();
-                    setTextFilter();
-                });
-
-                filterPopup.show();
+            RangeSlider rangeNumberSeats = (RangeSlider) popupView.findViewById(R.id.slider_distance);
+            if(mViewModel.getFilterDistance() > 0) {
+                rangeNumberSeats.setValues((float) mViewModel.getFilterDistance());
             }
+            rangeNumberSeats.addOnChangeListener(new RangeSlider.OnChangeListener() {
+                @Override
+                public void onValueChange(@NonNull RangeSlider slider, float value, boolean fromUser) {
+                    mViewModel.setFilterDistance((int) value);
+                }
+            });
+
+            ImageView closeButton = popupView.findViewById(R.id.close_popup);
+            Button btnSave = popupView.findViewById(R.id.save);
+
+            handleFilterButtons(popupView);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(viewClick.getContext());
+            builder.setView(popupView);
+            AlertDialog filterPopup = builder.create();
+
+            // Set an OnClickListener on the close button to dismiss the popup
+            closeButton.setOnClickListener(v -> {
+                filterPopup.dismiss();
+                mViewModel.cancel();
+                setTextFilter();
+            });
+
+            btnSave.setOnClickListener(v -> {
+                filterPopup.dismiss();
+                mViewModel.save();
+                buildCards();
+                setTextFilter();
+            });
+
+            filterPopup.show();
         });
 
         return view;
@@ -270,14 +317,7 @@ public class NetworkingFragment extends Fragment {
         // True if the user wants to select it now
         boolean selected = btn.getTextColors().getDefaultColor() == Color.BLACK;
 
-        if(selected) {
-            int newColor = ContextCompat.getColor(view.getContext(), R.color.ocean_blue);
-            btn.setBackgroundTintList(ColorStateList.valueOf(newColor));
-            btn.setTextColor(Color.WHITE);
-        } else {
-            btn.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
-            btn.setTextColor(Color.BLACK);
-        }
+        initializeButtons(view, btn, selected);
 
         int filterDistance = mViewModel.getFilterDistance();
         ArrayList<String> fields = mViewModel.getFields();

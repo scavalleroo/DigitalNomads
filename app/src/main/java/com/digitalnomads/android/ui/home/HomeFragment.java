@@ -8,8 +8,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.ActionOnlyNavDirections;
 import androidx.navigation.NavController;
@@ -27,6 +29,49 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        CardView cardWorkingSession = (CardView) view.findViewById(R.id.cardWorkingSession);
+
+        // Add swipe up gesture
+        cardWorkingSession.setOnTouchListener(new View.OnTouchListener() {
+            private float startY;
+            float distance;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                float endY;
+                float distance;
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        // Record the starting position of the touch
+                        startY = event.getY();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        // Calculate the distance of the swipe as the user's finger moves
+                        float currentY = event.getY();
+                        distance = currentY - startY;
+
+                        // If the swipe distance is greater than a threshold, show the pop up
+                        if (distance < -200) {
+                            Toast.makeText(view.getContext(), R.string.this_page_is_under_construction, Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                    case MotionEvent.ACTION_CANCEL:
+                    case MotionEvent.ACTION_UP:
+                        // Calculate the final distance of the swipe when the user lifts their finger
+                        endY = event.getY();
+                        distance = endY - startY;
+
+                        // If the swipe distance is greater than a threshold, show the pop up
+                        if (distance < -200) {
+                            Toast.makeText(view.getContext(), R.string.this_page_is_under_construction, Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                }
+                return true;
+            }
+        });
+
         LinearLayout swipe_left = view.findViewById(R.id.layout_swipe_left);
         LinearLayout swipe_right = view.findViewById(R.id.layout_swipe_right);
 
